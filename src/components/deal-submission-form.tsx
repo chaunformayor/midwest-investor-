@@ -1,0 +1,144 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { FORMSPREE_DEAL } from "@/lib/site";
+
+type Status = "idle" | "sending" | "success" | "error";
+
+export function DealSubmissionForm() {
+  const endpoint = useMemo(() => FORMSPREE_DEAL.endpoint(), []);
+  const [status, setStatus] = useState<Status>("idle");
+  const [message, setMessage] = useState<string>("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setStatus("sending");
+    setMessage("");
+
+    if (!endpoint) {
+      setStatus("error");
+      setMessage("Missing Formspree deal form ID. Set NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID in .env.local.");
+      return;
+    }
+
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: data
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setMessage("Deal received — we’ll review and follow up if it matches current criteria.");
+        form.reset();
+      } else {
+        const payload = await res.json().catch(() => null);
+        setStatus("error");
+        setMessage(payload?.error || "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  }
+
+  return (
+    <form onSubmit={onSubmit} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-soft">
+      <div className="grid gap-4 md:grid-cols-2">
+        <Field label="Your name" name="name" required placeholder="Your name" />
+        <Field label="Email" name="email" type="email" required placeholder="you@email.com" />
+        <Field label="Phone" name="phone" placeholder="(###) ###-####" />
+        <Field label="Property address" name="address" required placeholder="Street, City, State" />
+
+        <Field label="Asking price" name="price" placeholder="$" />
+        <Field label="Estimated rehab" name="rehab" placeholder="$" />
+        <Field label="ARV (if known)" name="arv" placeholder="$" />
+        <Field label="Current / projected rent" name="rent" placeholder="$ / month" />
+
+        <Textarea
+          label="Deal notes"
+          name="notes"
+          placeholder="Occupancy, condition, access instructions, timeline, anything else"
+        />
+      </div>
+
+      {/* Honeypot */}
+      <div className="hidden">
+        <label>
+          Do not fill this out: <input name="_gotcha" />
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        disabled={status === "sending"}
+        className="mt-6 rounded-2xl bg-zinc-900 px-6 py-3 text-sm font-semibold text-white hover:bg-zinc-800 disabled:opacity-50"
+      >
+        {status === "sending" ? "Submitting…" : "Submit Deal"}
+      </button>
+
+      {message ? (
+        <div
+          className={[
+            "mt-4 rounded-2xl p-3 text-sm",
+            status === "success" ? "bg-emerald-50 text-emerald-900" : "bg-rose-50 text-rose-900"
+          ].join(" ")}
+        >
+          {message}
+        </div>
+      ) : null}
+    </form>
+  );
+}
+
+function Field({
+  label,
+  name,
+  placeholder,
+  type = "text",
+  required
+}: {
+  label: string;
+  name: string;
+  placeholder?: string;
+  type?: string;
+  required?: boolean;
+}) {
+  return (
+    <label className="block">
+      <div className="text-sm font-semibold">{label}</div>
+      <input
+        className="mt-2 w-full rounded-2xl border border-zinc-300 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-300"
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required={required}
+      />
+    </label>
+  );
+}
+
+function Textarea({
+  label,
+  name,
+  placeholder
+}: {
+  label: string;
+  name: string;
+  placeholder?: string;
+}) {
+  return (
+    <label className="block md:col-span-2">
+      <div className="text-sm font-semibold">{label}</div>
+      <textarea
+        className="mt-2 min-h-[120px] w-full rounded-2xl border border-zinc-300 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-300"
+        name={name}
+        placeholder={placeholder}
+      />
+    </label>
+  );
+}

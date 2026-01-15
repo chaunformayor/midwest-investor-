@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { MobileCTA } from "@/components/mobile-cta";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -29,8 +30,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen bg-white text-zinc-900">
         <Header />
-        <main className="py-10">{children}</main>
+        {/* Extra bottom padding so the mobile sticky CTA doesn't cover content */}
+        <main className="py-10 pb-24 md:pb-10">{children}</main>
         <Footer />
+        <MobileCTA />
       </body>
     </html>
   );
