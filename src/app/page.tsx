@@ -17,9 +17,8 @@ export default function Home() {
           <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
             {SITE.tagline}
           </h1>
-          <p className="mt-4 text-lg text-zinc-600">
-            We source opportunities, execute the rehab, and stabilize the asset with professional management—so you can scale
-            with clarity and control.
+          <p className="mt-4 text-base sm:text-lg text-zinc-600">
+            We help investors acquire, rehab, and manage Midwest rentals with a disciplined, operator-led process.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button href="/contact#schedule" variant="primary">
@@ -49,7 +48,7 @@ export default function Home() {
             <li>• Market expertise in {SITE.city} and the Midwest</li>
           </ul>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 flex gap-3 overflow-x-auto sm:grid sm:grid-cols-2">
             <Stat label="Full rehabs completed" value="34" />
             <Stat label="Maintenance calls completed" value="298" />
             <Stat label="New roofs installed" value="15" />

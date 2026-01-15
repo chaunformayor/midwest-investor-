@@ -18,6 +18,7 @@ npm run start
 3. Create `.env.local` in the project root:
 ```bash
 NEXT_PUBLIC_FORMSPREE_FORM_ID=YOUR_FORM_ID
+NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID=YOUR_DEAL_FORM_ID
 ```
 
 ## Calendly

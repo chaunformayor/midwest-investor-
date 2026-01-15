@@ -9,6 +9,7 @@ const NAV = [
   { href: "/invest", label: "Invest With Us" },
   { href: "/how-it-works", label: "How It Works" },
   { href: "/track-record", label: "Track Record" },
+  { href: "/submit-deal", label: "Submit a Deal" },
   { href: "/market", label: "St. Louis + Midwest" },
   { href: "/contact", label: "Contact" }
 ];

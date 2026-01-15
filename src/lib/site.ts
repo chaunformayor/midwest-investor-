@@ -6,13 +6,21 @@ export const SITE = {
   email: "info@midwestinvestorservices.com",
   city: "St. Louis",
   region: "Missouri",
-  tagline: "Buy-and-hold real estate in the Midwest—built for cash flow and longevity."
+  tagline: "Acquire and operate Midwest rental real estate with a local execution team."
 };
 
 export const FORMSPREE = {
   // Put your Formspree form ID in .env.local as NEXT_PUBLIC_FORMSPREE_FORM_ID
   endpoint: () => {
     const id = process.env.NEXT_PUBLIC_FORMSPREE_FORM_ID;
+    return id ? `https://formspree.io/f/${id}` : "";
+  }
+};
+
+export const FORMSPREE_DEAL = {
+  // Put your Deal Submission Formspree form ID in .env.local as NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID
+  endpoint: () => {
+    const id = process.env.NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID;
     return id ? `https://formspree.io/f/${id}` : "";
   }
 };
