@@ -28,12 +28,12 @@ export default function Contact() {
       >
         <div id="schedule" className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-soft">
           <div className="text-sm text-zinc-600">
-            Replace the iframe src with your Calendly link (or another scheduler).
+            Schedule a 30‑minute investor introduction call.
           </div>
           <div className="mt-4 overflow-hidden rounded-2xl border border-zinc-200">
             <iframe
               title="Schedule an Investor Call"
-              src="https://calendly.com/your-calendly-link/15min"
+              src="https://calendly.com/mhs-stlouis/30min"
               className="h-[720px] w-full"
             />
           </div>

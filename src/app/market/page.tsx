@@ -15,7 +15,7 @@ export default function Market() {
       <div className="max-w-3xl">
         <h1 className="text-4xl font-semibold tracking-tight">{SITE.city} + Midwest market thesis</h1>
         <p className="mt-4 text-lg text-zinc-600">
-          We focus on durable cash flow, reasonable basis, and fundamentals that support long-term ownership.
+          We help clients cultivate greater economic and societal returns through real estate investing—anchored by durable cash flow and long-term ownership fundamentals.
         </p>
       </div>
 

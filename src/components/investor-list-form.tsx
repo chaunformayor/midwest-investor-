@@ -6,7 +6,7 @@ import { FORMSPREE } from "@/lib/site";
 type Status = "idle" | "sending" | "success" | "error";
 
 export function InvestorListForm() {
-  const endpoint = useMemo(() => FORMSPREE.endpoint(), []);
+  const endpoint = useMemo(() => FORMSPREE.investorEndpoint(), []);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
 

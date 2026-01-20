@@ -16,7 +16,7 @@ export default function Invest() {
       <div className="max-w-3xl">
         <h1 className="text-4xl font-semibold tracking-tight">Invest with an operator team in {SITE.city}.</h1>
         <p className="mt-4 text-lg text-zinc-600">
-          Our focus is disciplined buy-and-hold. We help investors source opportunities, execute rehab when needed, and manage
+          Our focus is disciplined buy-and-hold—helping you secure your future through real estate investment. We help investors source opportunities, execute rehab when needed, and manage
           for long-term performance.
         </p>
       </div>
@@ -72,6 +72,23 @@ export default function Invest() {
           ))}
         </div>
       </Section>
+
+
+<Section
+  title="Services"
+  description="We support investors at all experience levels. Common engagements include:"
+>
+  <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6">
+    <ul className="grid gap-2 text-sm text-zinc-700 md:grid-cols-2">
+      <li>• Entity creation</li>
+      <li>• Registered agent</li>
+      <li>• Property inspections</li>
+      <li>• Pre‑purchase analysis</li>
+      <li>• General contracting</li>
+      <li>• Consultation</li>
+    </ul>
+  </div>
+</Section>
 
       <Section title="Invite-only investor education" description="Kept private on purpose.">
         <div className="rounded-3xl border border-zinc-200 bg-zinc-50 p-6">
