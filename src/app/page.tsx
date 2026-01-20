@@ -15,11 +15,10 @@ export default function Home() {
             Midwest-focused • Out-of-state investor friendly
           </div>
           <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-5xl">
-            {SITE.tagline}
+            Welcome to MIS — your Midwest real estate investment partner.
           </h1>
-          <p className="mt-4 text-lg text-zinc-600">
-            We source opportunities, execute the rehab, and stabilize the asset with professional management—so you can scale
-            with clarity and control.
+          <p className="mt-4 text-base sm:text-lg text-zinc-600">
+            We offer a host of services from pre‑purchase walkthroughs and analysis through rehab, stabilization, and long‑term management—so your investment journey is smooth and successful.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">
             <Button href="/contact#schedule" variant="primary">
@@ -32,7 +31,7 @@ export default function Home() {
 
           <div className="mt-6 grid gap-3 sm:grid-cols-2">
             <div className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
-              In-house rehab + management to protect timelines and asset quality.
+              We are your partner—from analysis to execution—built around buy‑and‑hold investors.
             </div>
             <div className="rounded-2xl bg-zinc-50 p-4 text-sm text-zinc-700">
               Private investor education is invite-only for qualified buyers.
@@ -49,7 +48,7 @@ export default function Home() {
             <li>• Market expertise in {SITE.city} and the Midwest</li>
           </ul>
 
-          <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <div className="mt-6 flex gap-3 overflow-x-auto sm:grid sm:grid-cols-2">
             <Stat label="Full rehabs completed" value="34" />
             <Stat label="Maintenance calls completed" value="298" />
             <Stat label="New roofs installed" value="15" />
@@ -61,6 +60,43 @@ export default function Home() {
           </p>
         </div>
       </div>
+
+
+<Section
+  eyebrow="Core services"
+  title="We have you covered"
+  description="A complete operator stack for investors—especially out-of-state buy-and-hold."
+>
+  <div className="grid gap-4 md:grid-cols-3">
+    {[
+      {
+        title: "Analysis",
+        body: "Investment property analysis is a key element of any good strategy. We help you underwrite with discipline."
+      },
+      {
+        title: "Make Ready",
+        body: "Our construction team gets your property rent-ready and cash flowing quickly—with clear scope and timelines."
+      },
+      {
+        title: "Fix to Flip / Value-Add",
+        body: "From full gut rehabs to new construction: we execute value-add plans that build equity and stabilize cash flow."
+      }
+    ].map((c) => (
+      <div key={c.title} className="rounded-2xl border border-zinc-200 bg-white p-5 shadow-soft">
+        <div className="font-semibold">{c.title}</div>
+        <div className="mt-2 text-sm text-zinc-600">{c.body}</div>
+      </div>
+    ))}
+  </div>
+  <div className="mt-8">
+    <a
+      href="/invest"
+      className="text-sm font-semibold text-zinc-900 underline underline-offset-4"
+    >
+      View services for investors →
+    </a>
+  </div>
+</Section>
 
       <Section
         title="How it works"
