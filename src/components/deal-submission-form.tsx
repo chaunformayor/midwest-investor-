@@ -2,11 +2,13 @@
 
 import { useMemo, useState } from "react";
 import { FORMSPREE_DEAL } from "@/lib/site";
+import { FORMSPREE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 export function DealSubmissionForm() {
   const endpoint = useMemo(() => FORMSPREE_DEAL.endpoint(), []);
+  const endpoint = useMemo(() => FORMSPREE.dealEndpoint(), []);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
 
@@ -18,6 +20,7 @@ export function DealSubmissionForm() {
     if (!endpoint) {
       setStatus("error");
       setMessage("Missing Formspree deal form ID. Set NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID in .env.local.");
+      setMessage("Missing Formspree endpoint for deal submissions.");
       return;
     }
 
@@ -34,6 +37,7 @@ export function DealSubmissionForm() {
       if (res.ok) {
         setStatus("success");
         setMessage("Deal received — we’ll review and follow up if it matches current criteria.");
+        setMessage("Deal submitted — thank you. We’ll review and follow up.");
         form.reset();
       } else {
         const payload = await res.json().catch(() => null);
@@ -58,6 +62,16 @@ export function DealSubmissionForm() {
         <Field label="Estimated rehab" name="rehab" placeholder="$" />
         <Field label="ARV (if known)" name="arv" placeholder="$" />
         <Field label="Current / projected rent" name="rent" placeholder="$ / month" />
+        <Field label="Your name" name="name" required />
+        <Field label="Email" name="email" type="email" required />
+        <Field label="Phone" name="phone" />
+
+        <Field label="Property address" name="address" required />
+        <Field label="Asking price" name="asking_price" />
+        <Field label="Estimated rehab" name="estimated_rehab" />
+
+        <Field label="ARV (if known)" name="arv" />
+        <Field label="Current rent / projected rent" name="rent" />
 
         <Textarea
           label="Deal notes"
@@ -67,6 +81,10 @@ export function DealSubmissionForm() {
       </div>
 
       {/* Honeypot */}
+          placeholder="Occupancy, condition, timeline, access, anything else"
+        />
+      </div>
+
       <div className="hidden">
         <label>
           Do not fill this out: <input name="_gotcha" />
@@ -91,6 +109,10 @@ export function DealSubmissionForm() {
           {message}
         </div>
       ) : null}
+
+      <p className="mt-3 text-xs text-zinc-500">
+        Submissions are reviewed based on investor criteria and market fit.
+      </p>
     </form>
   );
 }

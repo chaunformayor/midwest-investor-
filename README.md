@@ -29,3 +29,12 @@ Replace the iframe `src` in `src/app/contact/page.tsx` with your Calendly event 
 - Import in Vercel
 - Set env var `NEXT_PUBLIC_FORMSPREE_FORM_ID`
 - Add your domain `midwestinvestorservices.com`
+
+
+## Included Formspree endpoints (already wired)
+- Investor List: https://formspree.io/f/maqqyknq
+- Deal Submissions: https://formspree.io/f/xeeekayk
+
+You can still override these via Vercel env vars if desired:
+- NEXT_PUBLIC_FORMSPREE_FORM_ID (or NEXT_PUBLIC_FORMSPREE_INVESTOR_ENDPOINT)
+- NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID (or NEXT_PUBLIC_FORMSPREE_DEAL_ENDPOINT)

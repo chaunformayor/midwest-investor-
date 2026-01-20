@@ -18,6 +18,14 @@ export default function SubmitDeal() {
       </div>
 
       <Section title="Deal details" description="We review submissions based on investor criteria and market fit.">
+          Have a property that fits a buy-and-hold investor profile? Submit it below.
+        </p>
+      </div>
+
+      <Section
+        title="Deal details"
+        description="We review deals that align with Midwest buy-and-hold strategies."
+      >
         <DealSubmissionForm />
       </Section>
     </Container>
