@@ -2,7 +2,7 @@ export const SITE = {
   name: "Midwest Investor Services",
   domain: "midwestinvestorservices.com",
   url: "https://midwestinvestorservices.com",
-  phone: "636-201-1239",
+  phone: "6365907698",
   email: "info@midwestinvestorservices.com",
   city: "St. Louis",
   region: "Missouri",
@@ -23,14 +23,6 @@ export const FORMSPREE = {
     const fallback = "https://formspree.io/f/xeeekayk";
     if (!v) return fallback;
     return v.startsWith("http") ? v : `https://formspree.io/f/${v}`;
-  }
-};
-
-export const FORMSPREE_DEAL = {
-  // Put your Deal Submission Formspree form ID in .env.local as NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID
-  endpoint: () => {
-    const id = process.env.NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID;
-    return id ? `https://formspree.io/f/${id}` : "";
   }
 };
 

@@ -1,13 +1,11 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { FORMSPREE_DEAL } from "@/lib/site";
 import { FORMSPREE } from "@/lib/site";
 
 type Status = "idle" | "sending" | "success" | "error";
 
 export function DealSubmissionForm() {
-  const endpoint = useMemo(() => FORMSPREE_DEAL.endpoint(), []);
   const endpoint = useMemo(() => FORMSPREE.dealEndpoint(), []);
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState<string>("");
@@ -19,7 +17,6 @@ export function DealSubmissionForm() {
 
     if (!endpoint) {
       setStatus("error");
-      setMessage("Missing Formspree deal form ID. Set NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID in .env.local.");
       setMessage("Missing Formspree endpoint for deal submissions.");
       return;
     }
@@ -36,7 +33,6 @@ export function DealSubmissionForm() {
 
       if (res.ok) {
         setStatus("success");
-        setMessage("Deal received — we’ll review and follow up if it matches current criteria.");
         setMessage("Deal submitted — thank you. We’ll review and follow up.");
         form.reset();
       } else {
@@ -53,15 +49,6 @@ export function DealSubmissionForm() {
   return (
     <form onSubmit={onSubmit} className="rounded-3xl border border-zinc-200 bg-white p-6 shadow-soft">
       <div className="grid gap-4 md:grid-cols-2">
-        <Field label="Your name" name="name" required placeholder="Your name" />
-        <Field label="Email" name="email" type="email" required placeholder="you@email.com" />
-        <Field label="Phone" name="phone" placeholder="(###) ###-####" />
-        <Field label="Property address" name="address" required placeholder="Street, City, State" />
-
-        <Field label="Asking price" name="price" placeholder="$" />
-        <Field label="Estimated rehab" name="rehab" placeholder="$" />
-        <Field label="ARV (if known)" name="arv" placeholder="$" />
-        <Field label="Current / projected rent" name="rent" placeholder="$ / month" />
         <Field label="Your name" name="name" required />
         <Field label="Email" name="email" type="email" required />
         <Field label="Phone" name="phone" />
@@ -76,11 +63,6 @@ export function DealSubmissionForm() {
         <Textarea
           label="Deal notes"
           name="notes"
-          placeholder="Occupancy, condition, access instructions, timeline, anything else"
-        />
-      </div>
-
-      {/* Honeypot */}
           placeholder="Occupancy, condition, timeline, access, anything else"
         />
       </div>
@@ -120,13 +102,11 @@ export function DealSubmissionForm() {
 function Field({
   label,
   name,
-  placeholder,
   type = "text",
   required
 }: {
   label: string;
   name: string;
-  placeholder?: string;
   type?: string;
   required?: boolean;
 }) {
@@ -137,7 +117,6 @@ function Field({
         className="mt-2 w-full rounded-2xl border border-zinc-300 px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-zinc-300"
         name={name}
         type={type}
-        placeholder={placeholder}
         required={required}
       />
     </label>

@@ -13,11 +13,6 @@ export default function SubmitDeal() {
       <div className="max-w-3xl">
         <h1 className="text-4xl font-semibold tracking-tight">Submit a Deal</h1>
         <p className="mt-4 text-lg text-zinc-600">
-          Have a property that fits a buy-and-hold investor profile? Send it here.
-        </p>
-      </div>
-
-      <Section title="Deal details" description="We review submissions based on investor criteria and market fit.">
           Have a property that fits a buy-and-hold investor profile? Submit it below.
         </p>
       </div>
