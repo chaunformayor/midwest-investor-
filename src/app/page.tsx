@@ -18,6 +18,7 @@ export default function Home() {
             Welcome to MIS — your Midwest real estate investment partner.
           </h1>
           <p className="mt-4 text-base sm:text-lg text-zinc-600">
+            We help investors acquire, rehab, and manage Midwest rentals with a disciplined, operator-led process.
             We offer a host of services from pre‑purchase walkthroughs and analysis through rehab, stabilization, and long‑term management—so your investment journey is smooth and successful.
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row">

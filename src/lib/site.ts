@@ -33,3 +33,11 @@ export const FORMSPREE_DEAL = {
     return id ? `https://formspree.io/f/${id}` : "";
   }
 };
+
+export const FORMSPREE_DEAL = {
+  // Put your Deal Submission Formspree form ID in .env.local as NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID
+  endpoint: () => {
+    const id = process.env.NEXT_PUBLIC_FORMSPREE_DEAL_FORM_ID;
+    return id ? `https://formspree.io/f/${id}` : "";
+  }
+};
